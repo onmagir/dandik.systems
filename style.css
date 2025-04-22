@@ -1,0 +1,32 @@
+@font-face {
+    src: url("fonts/Haskoy-Regular.woff2") format('woff2'),
+        url('fonts/Haskoy-Regular.ttf')  format('truetype');
+  font-family: "Haskoy"
+}
+
+
+body {
+	src: url("fonts/Haskoy-Regular.woff2") format('woff2'),
+        url('fonts/Haskoy-Regular.ttf')  format('truetype');
+  margin: 40px auto;
+  max-width: 650px;
+  line-height: 1.6;
+  font-size: 16px;
+  font-family: "Haskoy", Fallback, sans-serif;
+  background-color:black;
+  padding: 40px
+}
+code {
+font-size: 12px;
+}
+a {text-decoration: none;color:black; }
+h1, h2, h3
+{
+  line-height: 1.2
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+} 
+
