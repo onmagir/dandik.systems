@@ -1,0 +1,71 @@
+body { 
+  line-height: 1.4;
+    font-size: 16px;
+    padding: 0 10px;
+    margin: 50px auto;
+    max-width: 36em;
+    background-color: #121212;
+    color:#d6d6d6;
+        font-family:
+        "SF Mono", "SFMono-Regular", ui-monospace,
+        Menlo, Consolas, "Liberation Mono", monospace;
+	font-size: 0.9rem;
+}
+
+nav {
+    text-align: center;
+    margin-bottom: 30px;
+    background-color: #d6d6d6;
+    padding: 10px 0;
+}
+.menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.menu li {
+    display: inline;
+    margin: 0 20px;
+    
+}
+.menu li a {
+    font-size: 14px;
+    color: #121212;
+    text-decoration: none;
+}
+.menu li a:hover {
+    background-color:#d6d6d6;
+    font-weight: bold;
+}
+#maincontent
+{
+max-width:42em;margin:15 auto;
+
+}
+.about img {
+    float: left;
+    margin-right: 70px;
+    border: 1px solid #d6d6d6;
+}
+.header-text {
+    float: left;
+    padding-top: 10px;
+}
+a {
+    color: #9ACD32;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: none;
+}
+ul {
+    padding-left: 1.2em;
+    list-style-type: "↪ ";
+}
+li {
+    margin: 8px 0;
+}
+.post-date {
+  font-size: 0.8em;
+  color: #666666;
+}

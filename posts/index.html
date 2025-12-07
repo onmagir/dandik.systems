@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>posts</title>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.css" integrity="sha384-WcoG4HRXMzYzfCgiyfrySxx90XSl2rxY5mnVY5TwtWE6KLrArNKn0T/mOgNL0Mmi" crossorigin="anonymous">
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.js" integrity="sha384-J+9dG2KMoiR9hqcFao0IBLwxt6zpcyN68IgwzsCSkbreXUjmNVRhPFTssqdSGjwQ" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
+	<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\(', right: '\\)', display: false},
+              {left: '\\[', right: '\\]', display: true}
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    });
+	</script>
+
+</head>
+
+<body>
+<nav>
+  <ul class="menu">
+    <li><a href="/">home</a></li>
+    <li><a href="">blog</a></li>
+    <li><a target="_blank" href="/about/">about</a></li>
+  </ul>
+</nav>
+<ul class="blog-list">
+  
+    <li>
+      <a href="/all_posts/yazdigim_bir_siir/">test</a>
+      <span class="post-date">December 8, 2025</span>
+    </li>
+  
+    <li>
+      <a href="/all_posts/sen_miydin_o/">hmmm</a>
+      <span class="post-date">November 25, 2025</span>
+    </li>
+  
+    <li>
+      <a href="/all_posts/anda_kaybolmak/">woa</a>
+      <span class="post-date">April 12, 2025</span>
+    </li>
+  
+</ul>
+<style>
+  .blog-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-width: 36em;
+  }
+  .blog-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #d6d6d6;
+    font-family: "SF Mono", "SFMono-Regular", ui-monospace,
+        Menlo, Consolas, "Liberation Mono", monospace;
+    font-size: 16px;
+  }
+  .blog-list li a {
+    color: #9ACD32;
+    text-decoration: none;
+  }
+  .blog-list li a:hover {
+    text-decoration: none;
+  }
+  .post-date {
+    color: #666666;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+</style>
+
+</html>
