@@ -27,7 +27,6 @@ nav {
     
 }
 .menu li a {
-    font-size: 14px;
     color: #121212;
     text-decoration: none;
 }
@@ -64,6 +63,6 @@ li {
     margin: 8px 0;
 }
 .post-date {
-  font-size: 0.8em;
+  font-size: 0.6rem;
   color: #666666;
 }
