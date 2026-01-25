@@ -1,4 +1,4 @@
-baseURL = 'https://dandik.systems'
+baseURL = 'https://dandik.systems/'
 languageCode = 'en-us'
 title = 'dandik.systems'
 theme = 'ritzy'
