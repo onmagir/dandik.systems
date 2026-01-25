@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on dandik.systems</title>
+    <link>http://localhost:38933/posts/</link>
+    <description>Recent content in Posts on dandik.systems</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 25 Jan 2026 02:32:30 +0300</lastBuildDate>
+    <atom:link href="http://localhost:38933/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>My First Post</title>
+      <link>http://localhost:38933/posts/my-first-post/</link>
+      <pubDate>Sun, 25 Jan 2026 02:32:30 +0300</pubDate>
+      <guid>http://localhost:38933/posts/my-first-post/</guid>
+      <description>&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae justo vel velit sagittis&#xA;tempor. Nullam in dignissim leo, vitae tincidunt nisi. Cras ultrices molestie tortor,&#xA;vel fringilla purus volutpat non.&lt;/p&gt;&#xA;&lt;p&gt;Proin sit amet purus lectus. Sed dapibus diam vel magna commodo, nec vulputate tellus fermentum.&#xA;Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.&lt;/p&gt;&#xA;&lt;h2 id=&#34;math&#34;&gt;Math&lt;/h2&gt;&#xA;&lt;p&gt;You can use LaTeX math in your posts. For inline math, use single dollar signs, e.g. $E = mc^2$.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

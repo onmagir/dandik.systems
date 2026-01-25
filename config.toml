@@ -1,0 +1,12 @@
+baseURL = 'https://dandik.systems'
+languageCode = 'en-us'
+title = 'dandik.systems'
+theme = 'ritzy'
+
+[params]
+  author = "Dominik Ritzenhoff"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
