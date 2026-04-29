@@ -5,4 +5,4 @@ draft: false
 originalYear: "2025"
 ---
 
-📩 {arda,deniz,doruk} [at] dandik [dot] systems
+📩 Stay tuned!
