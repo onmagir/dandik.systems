@@ -11,15 +11,15 @@ Probably this will be a fast introduction to the some ideas in deep learning cal
 
 A pre-trained autoregressive language model denoted by
 $$P_\phi(y\lvert x)$$
-parametrized by set of parameters $$\phi$$. One can understand the task of a language model with these examples better:
+parametrized by set of parameters $\phi$. One can understand the task of a language model with these examples better:
 
 | $x_i, y_i$  | Task 1   | Task 2   |
 |----------|----------|----------|
 | $x_i$    | Content     | Natural Language     |
 | $y_i$    | Summary     | SQL     |
 
-Remember that both $$x_i$$ and $$y_i$$ are tokens. Each task has some type of training dataset
-$$Z=\lbrace(x_i,y_i)\rbrace_{i=1,\dots,N}$$
+Remember that both $x_i$ and $y_i$ are tokens. Each task has some type of training dataset
+$Z=\lbrace(x_i,y_i)\rbrace_{i=1,\dots,N}$.
 
 ## Full Fine-Tuning
 
@@ -29,11 +29,11 @@ $$\phi_0+\Delta \phi$$
 
 Again by mere backpropagation over whole parameter set one can fine-tune the model via this basic descent. This gives us a maximization problem for finding the maximizer parameter $\phi$:
 
-$$\operatorname*{arg\,max}_{\phi}\sum_{(x,y)\in Z}\sum_{t=1}^{\lvert y \rvert} \log{(P_\phi(y_t | x, y_ {<t}))}$$
+$$\argmax_{\phi}\sum_{(x,y)\in Z}\sum_{t=1}^{\lvert y \rvert} \log{(P_\phi(y_t | x, y_ {<t}))}$$
 
 From this maximization we can easily see that each tuning step learns different set of $$\Delta \phi$$ which has dimension $\lvert \Delta \phi \rvert = \lvert \phi_0 \rvert$. One can think that we already trained (pre) this many parameters but we actually got a *heavier* problem than normal pre-training: if we use the whole parameter space for training we are using it that many parameters for whole steps of fine-tuning. One great example is directly the example given in the LoRA paper: GPT-3. GPT-3 is a direct transformer model with 175 billion parameters, so for every step of full fine-tuning you need to load whole set of 175 billion parameters for the backpropagation updates. So, clearly it is awful. We actually have some more appropriate ways to fine-tune a model but today we are going to talk about one of the most important methods in low-rank fine-tuning.
 
-##A More "Parameter-Efficient" Approach
+## A More "Parameter-Efficient" Approach
 
 From now on we do not need to use the *whole* parameter set to introduce weight updates to the backpropagation. Some "intrinsic rank" property of training matrices directly allows us to use some part of the parameter space as:
 
@@ -45,7 +45,7 @@ $$\lvert \Theta \rvert << \lvert \phi_0\rvert$$
 
 Thus task of finding the new update parameters $\Delta \phi$ becomes
 
-$$\operatorname*{arg\,max}_{\Theta}\sum_{(x,y)\in Z}\sum_{t=1}^{\lvert y \rvert} \log{(P_{\phi^*}(y_t\lvert x, y_ {<t}))},$$
+$$\argmax_{\Theta}\sum_{(x,y)\in Z}\sum_{t=1}^{\lvert y \rvert} \log{(P_{\phi^*}(y_t\lvert x, y_ {<t}))},$$
 
 where $\phi^*=\phi_0+\Delta\phi(\Theta)$.
 
@@ -63,9 +63,9 @@ and constrain its update by a rank decomposition
 
 $$W_0 + \Delta W = W_0 + BA, \quad B\in\mathbb{R}^{d\times r},\ A\in\mathbb{R}^{r\times k},\ r << \min(d,k).$$
 
-Here $W_0$ is *frozen*, it receives no gradient at all, and only $$A$$ and $$B$$ are trainable. Note that $W_0$ and $\Delta W = BA$ are multiplied with the same input and their outputs are summed coordinate-wise, so for $h=W_0x$ the modified forward pass is simply
+Here $W_0$ is *frozen*, it receives no gradient at all, and only $A$ and $B$ are trainable. Note that $W_0$ and $\Delta W = BA$ are multiplied with the same input and their outputs are summed coordinate-wise, so for $h=W_0x$ the modified forward pass is simply
 
-$h = W_0x + \Delta W x = W_0 x + BAx.$
+$$h = W_0x + \Delta W x = W_0 x + BAx.$$
 
 Counting parameters, we went from $dk$ to $r(d+k)$ for that layer, and since $r$ is tiny (the paper uses $r=1,2,4,8$ while $d$ can be $12{,}288$) this is exactly the $\lvert\Theta\rvert << \lvert\phi_0\rvert$ we asked for above.
 
@@ -90,7 +90,7 @@ and then run inference exactly as usual. Both $W_0$ and $BA$ live in $\mathbb{R}
 
 ## The Picture Behind All of This
 
-![LoRA reparametrization: a frozen weight matrix in parallel with a trainable low-rank branch](../../public/images/lora-reparametrization.svg)
+![LoRA reparametrization: a frozen weight matrix in parallel with a trainable low-rank branch](/images/lora-reparametrization.svg)
 
 Everything we did above is in this one diagram, and it is worth reading it slowly.
 
@@ -104,4 +104,4 @@ The labels inside the trapezoids are the initialization we mentioned: $B=0$ and 
 
 Finally, the $+$ at the top. The two paths are summed coordinate-wise, not composed, and both branches are linear in $x$. This is the reason $W_0x + BAx = (W_0+BA)x$, which is exactly why you can fold the orange part into the blue one at deployment and pay nothing at inference time. If the detour were placed *after* the blue box instead of *beside* it, as in adapters, no such folding would exist and you would carry the extra depth forever.
 
-So the picture is really the argument: parallel instead of sequential gives you the free merge, the bottleneck gives you the parameter efficiency, and the zero initialization gives you a safe starting point. In the next part we can look at what happens when you actually ask which weight matrices deserve this treatment, and how small $$r$$ is allowed to get before the whole thing breaks.
+So the picture is really the argument: parallel instead of sequential gives you the free merge, the bottleneck gives you the parameter efficiency, and the zero initialization gives you a safe starting point. In the next part we can look at what happens when you actually ask which weight matrices deserve this treatment, and how small $r$ is allowed to get before the whole thing breaks.
